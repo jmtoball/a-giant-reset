@@ -31,7 +31,6 @@ export default async function Detail({params: { slug }}: Props) {
     "fields.slug": slug
   })).items[0];
   const contentComponents = post.fields.content && documentToReactComponents(post.fields.content, renderOptions)
-  console.log(post.fields.content);
   return (
     <main className="container">
       <div>

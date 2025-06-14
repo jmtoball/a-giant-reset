@@ -27,5 +27,8 @@ export type HikeLogSkeleton =
 
     /** Slug */
     slug: EntryFieldTypes.Text;
+
+    /** Cover */
+    cover?: EntryFieldTypes.AssetLink;
   }
 }
