@@ -1,4 +1,4 @@
-import { createClient, EntrySkeletonType } from "contentful";
+import { createClient } from "contentful";
 import { config } from "dotenv";
 
 config();

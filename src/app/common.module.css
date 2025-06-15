@@ -1,0 +1,18 @@
+.title {
+  display: block;
+  border-bottom: 4px solid #aa3333;
+  color: #aa3333;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.title a {
+  display: inline;
+}
+
+.widthConstraint {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
