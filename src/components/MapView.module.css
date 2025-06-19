@@ -3,3 +3,13 @@
   height: 500px;
   border-radius: 4px;
 }
+
+.kpiContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.kpi {
+  color: var(--color-fg-highlight);
+  margin-left: 0.25rem;
+}

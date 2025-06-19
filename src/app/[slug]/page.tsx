@@ -1,14 +1,12 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import CoverCard from '../../components/CoverCard';
 import MapView from '../../components/MapView';
+import Title from '../../components/Title';
 import RichText from '../../lib/contentful/RichText';
-import ContentfulClient, { getPostBySlug } from '../../lib/contentful/client';
-import { HikeLogSkeleton } from '../../lib/contentful/types';
+import { getPostBySlug, getPosts } from '../../lib/contentful/client';
 import { toFullUrl } from '../../lib/util';
 import commonStyles from '../common.module.css';
-import { capsFont } from '../fonts';
 import styles from './page.module.css';
 
 type Params = Promise<{
@@ -29,13 +27,7 @@ export default async function Detail({ params }: Props) {
 
   return (
     <article>
-      <h1 className={commonStyles.title + ' ' + capsFont.className}>
-        <div className={commonStyles.widthConstraint}>
-          <Link href="/">Giant Reset</Link>&nbsp;&nbsp;
-          <span className={styles.day}>Day {post.fields.day}</span>&nbsp;&nbsp;
-          <span className={styles.title}>{post.fields.title}</span>
-        </div>
-      </h1>
+      <Title day={post.fields.day} title={post.fields.title} />
       <div className={commonStyles.widthConstraint + ' ' + styles.columns}>
         <div className={styles.media}>
           <CoverCard post={post} inline />
@@ -64,6 +56,6 @@ export default async function Detail({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-  const posts = await ContentfulClient.getEntries<HikeLogSkeleton>();
+  const posts = await getPosts();
   return posts.items.map((entry) => ({ slug: entry.fields.slug }));
 }

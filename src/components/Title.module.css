@@ -1,0 +1,20 @@
+.title {
+  display: block;
+  border-bottom: 4px solid var(--color-fg-highlight);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--color-fg-highlight);
+}
+
+.title > div > span {
+  display: inline-block;
+  margin-left: 1.5rem;
+}
+
+.day {
+  color: var(--color-fg-subdued);
+}
+
+.headline {
+  color: var(--color-fg);
+}

@@ -23,3 +23,11 @@ export async function getPostBySlug(slug: string) {
   const post = posts.items[0];
   return post;
 }
+export async function getPosts() {
+  return await ContentfulClient.withoutUnresolvableLinks.getEntries<HikeLogSkeleton>(
+    {
+      content_type: 'hikeLog',
+      order: ['fields.date'],
+    },
+  );
+}
