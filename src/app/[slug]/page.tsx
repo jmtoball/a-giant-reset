@@ -1,11 +1,10 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, Block, Inline } from '@contentful/rich-text-types';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import CoverCard from '../../components/CoverCard';
 import MapView from '../../components/MapView';
-import ContentfulClient from '../../lib/contentful/client';
+import RichText from '../../lib/contentful/RichText';
+import ContentfulClient, { getPostBySlug } from '../../lib/contentful/client';
 import { HikeLogSkeleton } from '../../lib/contentful/types';
 import { toFullUrl } from '../../lib/util';
 import commonStyles from '../common.module.css';
@@ -20,47 +19,13 @@ type Props = {
   params: Params;
 };
 
-// FIXME: Remove polyfill once https://github.com/contentful/rich-text/issues/853 is fixed
-const renderAsset = (node: Block) => {
-  const metadata = node.data.target.fields;
-  console.log('metadata', metadata);
-  if (!metadata) return;
-  const imageUrl = toFullUrl(metadata.file.url);
-  const imgDescription = metadata.description ?? '';
-
-  return (
-    <Image
-      src={imageUrl}
-      alt={escape(imgDescription)}
-      width={metadata.file.details.media.width}
-      height={metadata.file.details.media.height}
-      loading="lazy"
-    />
-  );
-};
-
-const renderOptions = {
-  renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) =>
-      renderAsset(node as Block),
-  },
-};
-
 export default async function Detail({ params }: Props) {
   const { slug } = await params;
-  const posts =
-    await ContentfulClient.withoutUnresolvableLinks.getEntries<HikeLogSkeleton>(
-      {
-        content_type: 'hikeLog',
-        'fields.slug': slug,
-      },
-    );
+  const post = await getPostBySlug(slug);
 
-  if (!posts.items.length) {
+  if (!post) {
     return <div>Not found</div>;
   }
-
-  const post = posts.items[0];
 
   return (
     <article>
@@ -91,8 +56,7 @@ export default async function Detail({ params }: Props) {
           )}
         </div>
         <div className={styles.content}>
-          {post.fields.content &&
-            documentToReactComponents(post.fields.content, renderOptions)}
+          {post.fields.content && <RichText content={post.fields.content} />}
         </div>
       </div>
     </article>

@@ -1,6 +1,8 @@
 import { createClient } from 'contentful';
 import { config } from 'dotenv';
 
+import { HikeLogSkeleton } from './types';
+
 config();
 
 const ContentfulClient = createClient({
@@ -9,3 +11,15 @@ const ContentfulClient = createClient({
 });
 
 export default ContentfulClient;
+export async function getPostBySlug(slug: string) {
+  const posts =
+    await ContentfulClient.withoutUnresolvableLinks.getEntries<HikeLogSkeleton>(
+      {
+        content_type: 'hikeLog',
+        'fields.slug': slug,
+      },
+    );
+
+  const post = posts.items[0];
+  return post;
+}
