@@ -1,5 +1,5 @@
-import { createClient } from "contentful";
-import { config } from "dotenv";
+import { createClient } from 'contentful';
+import { config } from 'dotenv';
 
 config();
 

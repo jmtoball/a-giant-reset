@@ -1,10 +1,9 @@
-import { Asset, ChainModifiers, Entry, EntryFieldTypes } from "contentful";
+import { EntryFieldTypes } from 'contentful';
 
 import ContentfulClient from './client';
 
-export type HikeLogSkeleton =
-{
-  contentTypeId: "hikeLog",
+export type HikeLogSkeleton = {
+  contentTypeId: 'hikeLog';
   fields: {
     date: EntryFieldTypes.Date;
     day?: EntryFieldTypes.Number;
@@ -17,7 +16,11 @@ export type HikeLogSkeleton =
     cover: EntryFieldTypes.AssetLink;
     media: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     gpx: EntryFieldTypes.AssetLink;
-  }
-}
+  };
+};
 
-export type HikeLog = Awaited<ReturnType<typeof ContentfulClient.withoutUnresolvableLinks.getEntries<HikeLogSkeleton>>>['items'][number];
+export type HikeLog = Awaited<
+  ReturnType<
+    typeof ContentfulClient.withoutUnresolvableLinks.getEntries<HikeLogSkeleton>
+  >
+>['items'][number];
