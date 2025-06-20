@@ -1,0 +1,10 @@
+{
+  "title": "A Giant Reset",
+  "notFound": "Not found",
+  "day": "Day {day}",
+  "kpi": {
+    "distance": "Distance",
+    "duration": "Duration",
+    "elevation": "Elevation"
+  }
+}

@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import { unstable_ViewTransition as ViewTransition } from 'react';
 
@@ -6,10 +7,13 @@ import { HikeLog } from '../lib/contentful/types';
 import { toFullUrl } from '../lib/util';
 import styles from './CoverCard.module.css';
 
-function Day({ day }: { day: number }) {
+async function Day({ day }: { day: number }) {
+  const t = await getTranslations();
   return (
     <ViewTransition name={`day-${day}`}>
-      <span className={styles.day + ' ' + capsFont.className}>Day {day}</span>
+      <span className={[styles.day, capsFont.className].join(' ')}>
+        {t('day', { day })}
+      </span>
     </ViewTransition>
   );
 }

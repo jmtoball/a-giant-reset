@@ -1,6 +1,6 @@
 import { EntryFieldTypes } from 'contentful';
 
-import ContentfulClient from './client';
+import { getPosts } from './client';
 
 export type HikeLogSkeleton = {
   contentTypeId: 'hikeLog';
@@ -19,8 +19,4 @@ export type HikeLogSkeleton = {
   };
 };
 
-export type HikeLog = Awaited<
-  ReturnType<
-    typeof ContentfulClient.withoutUnresolvableLinks.getEntries<HikeLogSkeleton>
-  >
->['items'][number];
+export type HikeLog = Awaited<ReturnType<typeof getPosts>>['items'][number];

@@ -24,14 +24,6 @@
   border-radius: 4px;
 }
 
-.day {
-  color: #999;
-}
-
-.title {
-  color: #000;
-}
-
 .content {
   flex-basis: 50%;
   line-height: 1.6;

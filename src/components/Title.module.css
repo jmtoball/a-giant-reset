@@ -6,9 +6,17 @@
   color: var(--color-fg-highlight);
 }
 
-.title > div > span {
+.title > div > div > span {
   display: inline-block;
-  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.title > div {
+  display: flex;
+}
+
+.title > div > div {
+  align-self: center;
 }
 
 .day {
@@ -17,4 +25,13 @@
 
 .headline {
   color: var(--color-fg);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  .title > div > div > span {
+    margin-right: 0.75rem;
+  }
 }
