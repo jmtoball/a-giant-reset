@@ -1,18 +1,18 @@
 .article {
-  padding: 1rem 0;
+  padding: var(--space-base) 0;
 }
 
 .columns {
   display: flex;
   flex-direction: row-reverse;
-  gap: 1rem;
+  gap: var(--space-base);;
 }
 
 .media {
   flex-basis: 50%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-base);;
 }
 
 .mediaImage {

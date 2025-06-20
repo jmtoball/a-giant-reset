@@ -1,4 +1,5 @@
 :root {
+  --space-base: 1rem;
   --color-bg: #fff;
   --color-fg: #000;
   --color-fg-highlight: #aa3333;
@@ -27,4 +28,10 @@ body {
 
 .highlight {
   color: var(--highlight-color);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --space-base: 0.5rem;
+  }
 }

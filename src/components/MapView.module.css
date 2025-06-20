@@ -13,3 +13,10 @@
   color: var(--color-fg-highlight);
   margin-left: 0.25rem;
 }
+
+@media (max-width: 768px) {
+  .switcher a {
+    font-size: 1rem;
+    line-height: 0.7rem;
+  }
+}
