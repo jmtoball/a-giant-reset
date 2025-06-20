@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Script from 'next/script';
@@ -30,6 +31,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale}>
       <body className={bodyFont.className}>
+        <SpeedInsights />
         <NextIntlClientProvider>
           <ViewTransition>{children}</ViewTransition>
         </NextIntlClientProvider>
