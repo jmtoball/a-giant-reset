@@ -39,7 +39,7 @@ export default function CoverCard({
           />
         </ViewTransition>
       )}
-      {true && post.fields.day && <Day day={post.fields.day} />}
+      {post.fields.day != null && <Day day={post.fields.day} />}
       <span className={styles.title}>{post.fields.title}</span>
     </div>
   );

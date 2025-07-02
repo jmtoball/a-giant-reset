@@ -23,7 +23,9 @@ export default async function Title({ day, post, locale }: TitleProps) {
           <span>
             <Link href="/">{t('title')}</Link>
           </span>
-          {day && <span className={styles.day}>{t('day', { day })}</span>}
+          {day != null && (
+            <span className={styles.day}>{t('day', { day })}</span>
+          )}
           {post && <span className={styles.headline}>{post.fields.title}</span>}
         </div>
         <LanguageSwitcher activeLocale={locale} post={post} />
