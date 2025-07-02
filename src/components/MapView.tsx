@@ -17,7 +17,9 @@ function KPIView({ kpis }: { kpis: KPIs }) {
         {t('kpi.duration')}:
         <span className={styles.kpi}>
           {Math.floor(kpis.duration / 60 / 60)}:
-          {Math.ceil((kpis.duration / 60) % 60)}
+          {Math.ceil((kpis.duration / 60) % 60)
+            .toString()
+            .padStart(2, '0')}
         </span>
       </span>
       <span>

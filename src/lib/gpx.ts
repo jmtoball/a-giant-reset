@@ -35,7 +35,7 @@ export async function processGPX(gpxUrl: string): Promise<TrackData> {
       distance: gpxData.tracks[0].distance.total,
       elevationGain: gpxData.tracks[0].elevation.positive!,
       elevationLoss: gpxData.tracks[0].elevation.negative!,
-      duration: gpxData.tracks[0].duration.movingDuration,
+      duration: gpxData.tracks[0].duration.totalDuration,
     },
   };
 }
