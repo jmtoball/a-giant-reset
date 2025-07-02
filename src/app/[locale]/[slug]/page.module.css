@@ -28,6 +28,7 @@
   flex-basis: 50%;
   line-height: 1.6;
   min-width: 0;
+  hyphens: auto;
 }
 
 .content img {
