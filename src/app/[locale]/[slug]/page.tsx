@@ -1,3 +1,4 @@
+import { ResolvingMetadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import CoverCard from '../../../components/CoverCard';
@@ -8,7 +9,6 @@ import RichText from '../../../lib/contentful/RichText';
 import { getPostBySlug, getPosts } from '../../../lib/contentful/client';
 import commonStyles from '../../common.module.css';
 import styles from './page.module.css';
-import { ResolvingMetadata } from 'next';
 
 type Props = {
   params: Promise<{
@@ -17,10 +17,12 @@ type Props = {
   }>;
 };
 
-export async function generateMetadata({ params }: Props, parent: ResolvingMetadata) {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+) {
   const { locale, slug } = await params;
   const post = await getPostBySlug(slug, locale);
-  const t = await getTranslations({ locale });
 
   return {
     description: (await parent).description,

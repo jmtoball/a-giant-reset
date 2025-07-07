@@ -1,6 +1,6 @@
 :root {
   --space-base: 1rem;
-  --font-size-base: 1.2rem;
+  --font-size: 22px;
   --border-radius: 4px;
   --color-bg: #fff;
   --color-fg: #000;
@@ -25,7 +25,7 @@ body {
   overflow-x: hidden;
   color: var(--color-fg);
   background: var(--color-bg);
-  font-size: 1.2rem;
+  font-size: var(--font-size);
 }
 
 .highlight {
@@ -35,5 +35,6 @@ body {
 @media (max-width: 768px) {
   :root {
     --space-base: 0.5rem;
+    --font-size: 18px;
   }
 }

@@ -2,7 +2,6 @@
   float: left;
   display: flex;
   flex-direction: column;
-  width: 50%;
   aspect-ratio: 1;
 }
 

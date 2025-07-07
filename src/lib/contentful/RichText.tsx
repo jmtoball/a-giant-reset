@@ -3,7 +3,6 @@ import { BLOCKS, Block, Document, Inline } from '@contentful/rich-text-types';
 import Image from 'next/image';
 
 import { toFullUrl } from '../util';
-import styles from './RichText.module.css';
 
 export default function RichText({ content }: { content: Document }) {
   // FIXME: Remove polyfill once https://github.com/contentful/rich-text/issues/853 is fixed
@@ -15,7 +14,7 @@ export default function RichText({ content }: { content: Document }) {
 
     if (metadata.file.contentType.startsWith('image/')) {
       return (
-        <figure className={styles.asset}>
+        <figure>
           <Image
             src={url}
             alt={label}
@@ -23,19 +22,19 @@ export default function RichText({ content }: { content: Document }) {
             height={metadata.file.details.image.height}
             loading="lazy"
           />
-          {label && <figcaption className={styles.label}>{label}</figcaption>}
+          {label && <figcaption>{label}</figcaption>}
         </figure>
       );
     }
 
     if (metadata.file.contentType.startsWith('video/')) {
       return (
-        <figure className={styles.asset}>
+        <figure>
           <video controls preload="">
             <source src={url} type={metadata.file.contentType} />
             Your browser does not support the video tag.
           </video>
-          {label && <figcaption className={styles.label}>{label}</figcaption>}
+          {label && <figcaption>{label}</figcaption>}
         </figure>
       );
     }
