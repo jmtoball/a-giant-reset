@@ -34,7 +34,7 @@ export async function getPosts(locale: string) {
   return await ContentfulClient.withoutUnresolvableLinks.getEntries<HikeLogSkeleton>(
     {
       content_type: 'hikeLog',
-      order: ['fields.date'],
+      order: ['fields.day'],
       locale,
     },
   );

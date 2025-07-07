@@ -8,7 +8,7 @@ import styles from './MapView.module.css';
 function KPIView({ kpis }: { kpis: KPIs }) {
   const t = useTranslations();
   return (
-    <div className={[styles.kpiContainer, capsFont.className].join(' ')}>
+    <div className={[styles.kpis, capsFont.className].join(' ')}>
       <span>
         {t('kpi.distance')}:
         <span className={styles.kpi}>{Math.ceil(kpis.distance / 1000)}km</span>
@@ -38,7 +38,7 @@ export default async function MapView({ gpxUrl }: { gpxUrl?: string }) {
 
   const { positions, kpis } = await processGPX(gpxUrl);
   return (
-    <div>
+    <div className={styles.container}>
       {gpxUrl && <KPIView kpis={kpis} />}
       <ClientMapView positions={positions} />
     </div>

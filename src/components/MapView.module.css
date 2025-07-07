@@ -1,10 +1,17 @@
-.map {
-  width: 100%;
-  height: 500px;
-  border-radius: 4px;
+.container {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  aspect-ratio: 1;
 }
 
-.kpiContainer {
+.map {
+  border-radius: 4px;
+  flex: 1;
+}
+
+.kpis {
   display: flex;
   justify-content: space-between;
 }
