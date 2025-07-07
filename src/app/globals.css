@@ -28,6 +28,10 @@ body {
   font-size: var(--font-size);
 }
 
+body {
+  padding-bottom: 5rem;
+}
+
 .highlight {
   color: var(--highlight-color);
 }
