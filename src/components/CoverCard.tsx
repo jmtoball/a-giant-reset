@@ -40,7 +40,9 @@ export default function CoverCard({
         </ViewTransition>
       )}
       {post.fields.day != null && <Day day={post.fields.day} />}
-      <span className={styles.title}>{post.fields.title}</span>
+      <span className={[styles.title, capsFont.className].join(' ')}>
+        {post.fields.title}
+      </span>
     </div>
   );
 }
