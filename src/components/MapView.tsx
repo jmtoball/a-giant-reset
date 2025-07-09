@@ -32,7 +32,11 @@ function KPIView({ kpis }: { kpis: KPIs }) {
   );
 }
 
-export default async function MapView({ gpxUrl }: { gpxUrl?: string }) {
+type Props = {
+  gpxUrl?: string;
+};
+
+export default async function MapView({ gpxUrl }: Props) {
   if (!gpxUrl) return;
   const ClientMapView = lazy(() => import('./MapView.client'));
 

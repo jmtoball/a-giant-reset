@@ -55,7 +55,11 @@ function calculateZoom(positions: Positions): number {
   return Math.min(Math.max(zoom, 1), 18);
 }
 
-export default function ClientMapView({ positions }: { positions: Positions }) {
+type Props = {
+  positions: Positions;
+};
+
+export default function ClientMapView({ positions }: Props) {
   const [isClientSide, setClientSide] = useState(false);
 
   useEffect(() => {
@@ -72,7 +76,7 @@ export default function ClientMapView({ positions }: { positions: Positions }) {
         attribution='<a href="http://opentopomap.org/">OpenTopoMap</a>'
       />
       <Polyline
-        pathOptions={{ color: '#aa3333', weight: 6 }}
+        pathOptions={{ color: 'var(--color-fg-highlight)', weight: 6 }}
         positions={positions}
       />
     </MapContainer>

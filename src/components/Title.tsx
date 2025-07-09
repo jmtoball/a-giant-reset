@@ -7,13 +7,13 @@ import { HikeLog } from '../lib/contentful/types';
 import LanguageSwitcher from './LanguageSwitcher';
 import styles from './Title.module.css';
 
-type TitleProps = {
+type Props = {
   day?: number;
   post?: HikeLog;
   locale: string;
 };
 
-export default async function Title({ day, post, locale }: TitleProps) {
+export default async function Title({ day, post, locale }: Props) {
   const t = await getTranslations();
 
   return (

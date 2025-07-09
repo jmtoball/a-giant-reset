@@ -4,13 +4,12 @@ import { getPost } from '../lib/contentful/client';
 import { HikeLog } from '../lib/contentful/types';
 import styles from './LanguageSwitcher.module.css';
 
-export default async function LanguageSwitcher({
-  activeLocale,
-  post,
-}: {
+type Props = {
   activeLocale: string;
   post?: HikeLog;
-}) {
+};
+
+export default async function LanguageSwitcher({ activeLocale, post }: Props) {
   const slug = post?.sys.id && (await getPost(post?.sys.id)).fields.slug;
 
   return (
