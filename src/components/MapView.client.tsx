@@ -68,7 +68,7 @@ export default function ClientMapView({ positions }: { positions: Positions }) {
   return isClientSide ? (
     <MapContainer center={center} zoom={zoom} className={styles.map}>
       <TileLayer
-        url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
+        url="/api/tile/{z}/{x}/{y}"
         attribution='<a href="http://opentopomap.org/">OpenTopoMap</a>'
       />
       <Polyline
