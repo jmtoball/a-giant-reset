@@ -7,7 +7,6 @@ import { capsFont } from '../app/fonts';
 import { HikeLog } from '../lib/contentful/types';
 import { toFullUrl } from '../lib/util';
 import styles from './CoverCard.module.css';
-import WithZoom from './WithZoom';
 
 async function Day({ day }: { day: number }) {
   const t = await getTranslations();
@@ -20,28 +19,20 @@ async function Day({ day }: { day: number }) {
   );
 }
 
-export default function CoverCard({
-  post,
-  inline,
-}: {
-  post: HikeLog;
-  inline?: boolean;
-}) {
-  const MaybeWithZoom = inline ? WithZoom : React.Fragment;
+export default function CoverCard({ post }: { post: HikeLog }) {
   return (
-    <div className={[styles.card, inline ? styles.inline : ''].join(' ')}>
+    <div className={styles.card}>
       {post.fields.cover && post.fields.cover.fields.file && (
         <ViewTransition name={`cover-${post.fields.day}`}>
-          <MaybeWithZoom>
-            <Image
-              src={toFullUrl(post.fields.cover.fields.file.url)}
-              alt={post.fields.title}
-              width={post.fields.cover.fields.file.details.image?.width ?? 0}
-              height={post.fields.cover.fields.file.details.image?.height ?? 0}
-              loading="lazy"
-              className={styles.coverImage}
-            />
-          </MaybeWithZoom>
+          <Image
+            src={toFullUrl(post.fields.cover.fields.file.url)}
+            alt={post.fields.title}
+            width={post.fields.cover.fields.file.details.image?.width ?? 0}
+            height={post.fields.cover.fields.file.details.image?.height ?? 0}
+            sizes="100vw, 50vw"
+            loading="lazy"
+            className={styles.coverImage}
+          />
         </ViewTransition>
       )}
       {post.fields.day != null && <Day day={post.fields.day} />}
