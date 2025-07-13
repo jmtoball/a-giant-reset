@@ -32,10 +32,6 @@ body {
   padding-bottom: 5rem;
 }
 
-.highlight {
-  color: var(--highlight-color);
-}
-
 @media (max-width: 768px) {
   :root {
     --space-base: 0.5rem;

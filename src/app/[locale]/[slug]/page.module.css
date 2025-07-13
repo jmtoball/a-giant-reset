@@ -11,6 +11,15 @@
 .media > * {
   flex: 1;
   max-width: calc(50% - var(--space-base)/2);
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.media > div > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius);
 }
 
 .content {

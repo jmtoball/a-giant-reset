@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
-import { lazy } from 'react';
 
 import { capsFont } from '../app/fonts';
-import { KPIs, processGPX } from '../lib/gpx';
+import { KPIs, Positions } from '../lib/gpx';
+import ClientMapView from './MapView.client';
 import styles from './MapView.module.css';
 
 function KPIView({ kpis }: { kpis: KPIs }) {
@@ -33,17 +33,14 @@ function KPIView({ kpis }: { kpis: KPIs }) {
 }
 
 type Props = {
-  gpxUrl?: string;
+  kpis: KPIs;
+  positions: Positions;
 };
 
-export default async function MapView({ gpxUrl }: Props) {
-  if (!gpxUrl) return;
-  const ClientMapView = lazy(() => import('./MapView.client'));
-
-  const { positions, kpis } = await processGPX(gpxUrl);
+export default function MapView({ kpis, positions }: Props) {
   return (
     <div className={styles.container}>
-      {gpxUrl && <KPIView kpis={kpis} />}
+      <KPIView kpis={kpis} />
       <ClientMapView positions={positions} />
     </div>
   );
