@@ -1,5 +1,6 @@
 'use client';
 
+import { track } from '@vercel/analytics';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -28,12 +29,22 @@ function renderPostNavigation(post: HikeLog, posts: HikeLog[]) {
   return (
     <div className={styles.postNavigation}>
       {prevPost ? (
-        <Link href={`${prevPost.fields.slug}`}>← {prevPost.fields.title}</Link>
+        <Link
+          href={`${prevPost.fields.slug}`}
+          onClick={() => track('prev_post', { day: post.fields.day || -1 })}
+        >
+          ← {prevPost.fields.title}
+        </Link>
       ) : (
         <span />
       )}
       {nextPost ? (
-        <Link href={`${nextPost.fields.slug}`}>{nextPost.fields.title} →</Link>
+        <Link
+          href={`${nextPost.fields.slug}`}
+          onClick={() => track('next_post', { day: post.fields.day || -1 })}
+        >
+          {nextPost.fields.title} →
+        </Link>
       ) : (
         <span />
       )}
@@ -73,7 +84,10 @@ export default function DetailClient({
             quality={90}
             loading="lazy"
             className={styles.coverImage}
-            onClick={() => openSlide(0)}
+            onClick={() => {
+              openSlide(0);
+              track('open_cover', { image: post.fields.title });
+            }}
           />
         </div>
         {positions && kpis && <MapView positions={positions} kpis={kpis} />}

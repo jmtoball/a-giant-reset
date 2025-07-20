@@ -2,6 +2,7 @@
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, Block, Document, Inline } from '@contentful/rich-text-types';
+import { track } from '@vercel/analytics';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
 
@@ -47,7 +48,10 @@ export default function RichText({
             loading="lazy"
             sizes="75vw, 100vw"
             quality={90}
-            onClick={() => openSlide(assetIdx)}
+            onClick={() => {
+              openSlide(assetIdx);
+              track('open_image', { image: label });
+            }}
           />
           {label && <figcaption>{label}</figcaption>}
         </figure>
@@ -66,7 +70,14 @@ export default function RichText({
       const assetIdx = slides.findIndex((slide) => slide.src === url);
       return (
         <figure key={url}>
-          <video controls preload="" onClick={() => openSlide(assetIdx)}>
+          <video
+            controls
+            preload=""
+            onClick={() => {
+              openSlide(assetIdx);
+              track('open_video', { video: label });
+            }}
+          >
             <source src={url} type={metadata.file.contentType} />
             Your browser does not support the video tag.
           </video>

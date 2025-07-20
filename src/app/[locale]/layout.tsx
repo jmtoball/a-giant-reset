@@ -2,7 +2,6 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import Script from 'next/script';
 import { unstable_ViewTransition as ViewTransition } from 'react';
 
 import { bodyFont } from '../fonts';
