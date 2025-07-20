@@ -38,13 +38,6 @@ export default async function LocaleLayout({ children, params }: Props) {
         <NextIntlClientProvider>
           <ViewTransition>{children}</ViewTransition>
         </NextIntlClientProvider>
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-          crossOrigin=""
-        />
-        <Script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></Script>
       </body>
     </html>
   );

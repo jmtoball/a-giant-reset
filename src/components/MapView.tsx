@@ -1,3 +1,4 @@
+import 'leaflet/dist/leaflet.css';
 import { useTranslations } from 'next-intl';
 
 import { capsFont } from '../app/fonts';
