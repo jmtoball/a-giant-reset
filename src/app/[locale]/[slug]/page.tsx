@@ -23,7 +23,7 @@ export async function generateMetadata(
 
   return {
     description: (await parent).description,
-    title: `${post.fields.title} | ${(await parent).title}`,
+    title: `${post.fields.title} | ${(await parent).title?.absolute}`,
   };
 }
 
