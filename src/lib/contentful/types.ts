@@ -6,15 +6,11 @@ export type HikeLogSkeleton = {
   contentTypeId: 'hikeLog';
   fields: {
     date: EntryFieldTypes.Date;
-    day?: EntryFieldTypes.Number;
-    distance?: EntryFieldTypes.Number;
-    ascent?: EntryFieldTypes.Number;
-    descent?: EntryFieldTypes.Number;
+    day: EntryFieldTypes.Number;
     title: EntryFieldTypes.Text;
-    content?: EntryFieldTypes.RichText;
+    content: EntryFieldTypes.RichText;
     slug: EntryFieldTypes.Text;
     cover: EntryFieldTypes.AssetLink;
-    media: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     gpx: EntryFieldTypes.AssetLink;
   };
 };
